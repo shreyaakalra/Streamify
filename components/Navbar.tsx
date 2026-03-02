@@ -4,7 +4,7 @@ import Image from 'next/image';
 export default function Navbar() {
   return (
     <nav className="w-full">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6 py-10">
         <Image
           src="/images/logo-streamify.png"
           alt="Streamify logo"

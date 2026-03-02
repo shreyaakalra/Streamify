@@ -17,10 +17,10 @@ export default function Hero() {
 
       <div className="flex flex-col sm:flex-row gap-3 mt-8 w-full max-w-xl">
         <Input
-          className="h-12 flex-1 rounded-sm border border-gray-500 bg-black/40 placeholder:text-gray-400 focus:border-white"
+          className="h-12 sm:h-12 rounded-none border border-gray-400 bg-black/40 placeholder:text-gray-400 hover:border-white"
           placeholder="Email Address"
         />
-        <Button variant="destructive" className="h-12 rounded-sm px-6 font-bold text-base whitespace-nowrap">
+        <Button variant="destructive" className="h-12 rounded-none px-6 font-bold text-base whitespace-nowrap w-50 mx-auto">
           Get Started <ChevronRight className="ml-1 w-5 h-5" />
         </Button>
       </div>
