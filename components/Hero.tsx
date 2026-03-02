@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Button } from "./ui/button"
 import { Input } from "./ui/input"
 import { ChevronRight } from 'lucide-react';
@@ -20,9 +21,15 @@ export default function Hero() {
           className="h-12 sm:h-12 rounded-none border border-gray-400 bg-black/40 placeholder:text-gray-400 hover:border-white"
           placeholder="Email Address"
         />
-        <Button variant="destructive" className="h-12 rounded-none px-6 font-bold text-base whitespace-nowrap w-50 mx-auto">
-          Get Started <ChevronRight className="ml-1 w-5 h-5" />
+        <Link href={"/sign-up"}>
+        <Button
+            variant="destructive" 
+            className="h-12 rounded-none px-6 font-bold text-base whitespace-nowrap w-50 mx-auto hover:underline"
+        >
+          Get Started
+          <ChevronRight className="ml-1 w-5 h-5" />
         </Button>
+        </Link>
       </div>
     </section>
   );
