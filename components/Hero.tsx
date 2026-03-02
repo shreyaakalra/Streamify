@@ -4,7 +4,7 @@ import { ChevronRight } from 'lucide-react';
 
 export default function Hero() {
   return (
-    <section className="flex flex-col items-center text-center px-6 py-24 max-w-2xl mx-auto">
+    <section className="flex flex-col items-center text-center px-6 py-24 max-w-2xl mx-auto ">
       <h1 className="text-4xl sm:text-5xl font-black leading-tight drop-shadow-lg">
         Unlimited movies, shows and more
       </h1>
