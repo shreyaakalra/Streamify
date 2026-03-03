@@ -12,6 +12,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
 export default function SignIn() {
+
   return (
     <div className="relative min-h-screen w-full flex flex-col">
       <Background />
