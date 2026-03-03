@@ -22,7 +22,7 @@ export default function SignIn() {
             <CardHeader>
               <CardTitle>Login to your account</CardTitle>
               <CardDescription>
-                Enter your email and password to log in
+                Enter your email and password to log in to your account
               </CardDescription>
             </CardHeader>
             <CardContent>
