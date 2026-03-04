@@ -12,8 +12,33 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { useSearchParams } from "next/navigation";
+import { useState } from "react";
 
 export default function SignUp() {
+
+  const searchParams = useSearchParams();
+
+  const emailFromUrl = searchParams.get("email") || "";
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: emailFromUrl,
+    password: ""
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.id]: e.target.value
+    });
+  }
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+  }
+
+
   return (
     <div className="relative min-h-screen w-full flex flex-col">
       <Background />
@@ -28,15 +53,17 @@ export default function SignUp() {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <form>
+              <form onSubmit={handleSubmit}>
                 <div className="flex flex-col gap-6">
                   <div className="flex flex-col gap-3">
                     <Label htmlFor="name">Name</Label>
                     <Input
                       id="name"
                       type="text"
+                      value={formData.name}
                       placeholder="Enter your name"
                       required
+                      onChange={handleChange}
                     />
                   </div>
                   <div className="flex flex-col gap-3">
@@ -44,8 +71,10 @@ export default function SignUp() {
                     <Input
                       id="email"
                       type="email"
+                      value={formData.email}
                       placeholder="Enter your email"
                       required
+                      onChange={handleChange}
                     />
                   </div>
                   <div className="flex flex-col gap-3">
@@ -53,8 +82,10 @@ export default function SignUp() {
                     <Input
                       id="password"
                       type="password"
+                      value={formData.password}
                       placeholder="Enter your password"
                       required
+                      onChange={handleChange}
                     />
                   </div>
                   <Button variant="destructive" className="mt-6">
