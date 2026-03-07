@@ -12,10 +12,12 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 
 export default function SignUp() {
+
+  const router = useRouter();
 
   const searchParams = useSearchParams();
 
@@ -34,9 +36,30 @@ export default function SignUp() {
     });
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-  }
+
+    try{
+      const response = await fetch("/api/auth/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if(response.ok){
+        alert("Account created successfully!");
+        router.push("/")
+      }
+      else{
+        const errorMessage = await response.text();
+        alert(`Error: ${errorMessage}`);
+      }
+    } catch (error){
+      console.log("something went wrong:", error);
+    }
+  };
 
 
   return (
