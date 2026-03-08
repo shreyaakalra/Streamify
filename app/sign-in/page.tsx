@@ -14,6 +14,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { signIn } from "next-auth/react";
 
 export default function SignIn() {
 
@@ -31,6 +32,28 @@ export default function SignIn() {
     }
   )}
 
+  const handleSubmit = async(e: React.FormEvent) => {
+    e.preventDefault();
+
+    try{
+      const result = await signIn("credentials", {
+        email: formData.email,
+        password: formData.password,
+        redirect: false,
+      });
+
+      if(result?.ok){
+        router.push("/dashboard");
+      }
+      else if(result?.error){
+        alert("Wrong credentials!")
+      }
+
+    } catch (error){
+      console.log("something went wrong", error);
+    }
+  }
+
   return (
     <div className="relative min-h-screen w-full flex flex-col">
       <Background />
@@ -45,7 +68,7 @@ export default function SignIn() {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <form>
+              <form onSubmit={handleSubmit}>
                 <div className="flex flex-col gap-6">
                   <div className="flex flex-col gap-3">
                     <Label htmlFor="email">Email</Label>
@@ -64,7 +87,7 @@ export default function SignIn() {
                       id="password"
                       type="password"
                       placeholder="Enter your password"
-                      value={formData.email}
+                      value={formData.password}
                       onChange={handleChange}
                       required
                     />

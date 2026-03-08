@@ -4,6 +4,7 @@ import { prisma } from "@/lib/prisma";
 import bcrypt from "bcryptjs";
 import { PrismaClient, Prisma } from "@prisma/client";
 import { DefaultArgs } from "@prisma/client/runtime/client";
+import { PrismaAdapter } from "@auth/prisma-adapter";
 
 const handler = NextAuth({
   adapter: PrismaAdapter(prisma),
@@ -47,7 +48,3 @@ const handler = NextAuth({
 });
 
 export { handler as GET, handler as POST };
-
-function PrismaAdapter(prisma: PrismaClient<Prisma.PrismaClientOptions, never, DefaultArgs>): import("next-auth/adapters").Adapter | undefined {
-  throw new Error("Function not implemented.");
-}
