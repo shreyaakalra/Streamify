@@ -1,3 +1,5 @@
+"use client"
+
 import Background from "@/components/Background";
 import Navbar from "@/components/Navbar";
 import { Button } from "@/components/ui/button";
@@ -10,8 +12,24 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 export default function SignIn() {
+
+  const router = useRouter();
+
+  const [formData, setFormData] = useState({
+    email: "",
+    password: ""
+  })
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.id] : e.target.value
+    }
+  )}
 
   return (
     <div className="relative min-h-screen w-full flex flex-col">
@@ -35,6 +53,8 @@ export default function SignIn() {
                       id="email"
                       type="email"
                       placeholder="Enter your email"
+                      value={formData.email}
+                      onChange={handleChange}
                       required
                     />
                   </div>
@@ -44,6 +64,8 @@ export default function SignIn() {
                       id="password"
                       type="password"
                       placeholder="Enter your password"
+                      value={formData.email}
+                      onChange={handleChange}
                       required
                     />
                   </div>
