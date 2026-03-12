@@ -2,7 +2,7 @@
 
 // NextAuth is incredibly good at checking IDs but it refuses to build new IDs. It handles the cookies and the session security but we need this signup route to act as a registration desk to save users to the database.
 
-// Its only job is to take a brand new user, shred their password, put them in the MongoDB vault, and say "Okay, you exist now. Go to the Front Door to log in."
+// It's only job is to take a brand new user, shred their password, put them in the MongoDB vault, and say "Okay, you exist now. Go to the Front Door to log in."
 
 
 import { prisma } from "@/lib/prisma";
