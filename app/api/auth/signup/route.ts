@@ -27,7 +27,9 @@ export async function POST(request: Request){
       },
     })
 
-    
+    if(userExists){
+      return new NextResponse("Email already in use.", {status: 400})
+    }
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
