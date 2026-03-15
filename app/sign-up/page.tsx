@@ -48,7 +48,14 @@ export default function SignUp() {
         body: JSON.stringify(formData),
       });
 
-      
+      if(response.ok){
+        alert("Account created successfully!");
+        router.push("/dashboard")
+      }
+      else{
+        const errorMessage = await response.text();
+        alert(`Error: ${errorMessage}`);
+      }
     } catch (error){
       console.log("something went wrong:", error);
     }
