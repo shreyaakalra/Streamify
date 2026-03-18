@@ -89,17 +89,7 @@ export default function SignUp() {
                       onChange={handleChange}
                     />
                   </div>
-                  <div className="flex flex-col gap-3">
-                    <Label htmlFor="email">Email</Label>
-                    <Input
-                      id="email"
-                      type="email"
-                      value={formData.email}
-                      placeholder="Enter your email"
-                      required
-                      onChange={handleChange}
-                    />
-                  </div>
+                  
                   <div className="flex flex-col gap-3">
                     <Label htmlFor="password">Password</Label>
                     <Input
