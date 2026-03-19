@@ -49,7 +49,6 @@ export default function SignUp() {
       });
 
       if(response.ok){
-        alert("Account created successfully!");
         router.push("/dashboard")
       }
       else{
